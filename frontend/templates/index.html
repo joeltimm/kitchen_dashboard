@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitchen Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/gridstack@4.0.0/dist/gridstack.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.9.20/interact.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="widget" id="calendar-widget">
+      <h2>Google Calendar</h2>
+      <div id="calendar"></div>
+    </div>
+    <div class="widget" id="weather-widget">
+      <h2>Local Weather</h2>
+      <div id="weather"></div>
+    </div>
+    <div class="widget" id="photos-widget">
+      <h2>Photos</h2>
+      <div id="photos"></div>
+    <div class="widget" id="clock-widget">
+     <h2>Local Time</h2>
+     <div id="clock"></div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

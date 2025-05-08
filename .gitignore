@@ -1,0 +1,7 @@
+__pycache__/
+*.log
+.venv/
+*.env
+/static_data/*.json
+/venv/
+~/auths

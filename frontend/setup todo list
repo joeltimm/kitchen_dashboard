@@ -1,0 +1,53 @@
+🚀 Next on the list: Frontend UI — Drag-Resizable Calendar Widget
+
+Now that the backend is set up and your Flask app is running on port 5050, the next step is to work on the frontend UI where the user can:
+
+    See the calendar, local weather, and photos.
+
+    Resize and drag widgets (calendar widget, weather display, etc.).
+
+    Adjust widget order (front/back stacking).
+
+🛠️ Next Step: Frontend Setup
+
+Here’s a high-level breakdown of what we need to do for the frontend:
+
+    Basic Layout:
+
+        Set up a simple HTML structure with div elements for each widget.
+
+        Use CSS Grid or Flexbox to position widgets.
+
+    Drag & Resize Widgets:
+
+        Implement widget interactivity using JavaScript and a library like GridStack.js (for grid-based drag-and-resize).
+
+    Dynamic Data:
+
+        Fetch data for the calendar, weather, and OneDrive images from your backend using AJAX calls to Flask’s REST endpoints (/api/calendar, /api/weather, /api/photos).
+
+    Save Layout:
+
+        Allow users to adjust the layout (size, position) of widgets.
+
+        Use localStorage or save layout preferences in the backend database.
+
+Step-by-Step for the Frontend:
+
+    Create HTML structure for the dashboard.
+
+    Implement JavaScript for dynamic loading, widget resizing, and drag functionality (using GridStack.js or Interact.js).
+
+    Link backend APIs to dynamically update widgets with data (e.g., calendar events, weather info).
+
+    Optionally, store widget positions and other settings in a JSON file or database for persistence.
+
+Would you like me to:
+
+    Set up the basic HTML template for the dashboard and show how to integrate the backend data?
+
+    Focus on drag-and-drop/resize functionality (with JavaScript and GridStack)?
+
+    Discuss the backend endpoints for weather, calendar, and OneDrive images?
+
+Let me know how you’d like to proceed!
