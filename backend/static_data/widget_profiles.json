@@ -1,0 +1,14 @@
+{
+  "kitchen": {
+    "clock":     { "enabled": true,  "width": 200, "height": 100 },
+    "calendar":  { "enabled": true,  "width": 300, "height": 400 },
+    "weather":   { "enabled": false, "width": 400, "height": 200 },
+    "photos":    { "enabled": true,  "width": 500, "height": 500 }
+  },
+  "living_room": {
+    "clock":     { "enabled": true,  "width": 200, "height": 100 },
+    "calendar":  { "enabled": true,  "width": 300, "height": 400 },
+    "weather":   { "enabled": false, "width": 400, "height": 200 },
+    "photos":    { "enabled": true,  "width": 500, "height": 500 }
+  }
+}

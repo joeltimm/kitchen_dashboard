@@ -1,7 +1,10 @@
 from flask import Flask, jsonify
 from calendar_widget import fetch_events, start_polling
 from weather import get_weather
-# STILL NEED TO BUILD from backend.photos import fetch_photos
+from onedrive_widget import get_next_image
+from widget_profiles import widget_api
+app.register_blueprint(widget_api)
+
 
 app = Flask(__name__)
 
@@ -19,10 +22,9 @@ def api_weather():
     weather_data = get_weather()  # Fetch local weather info
     return jsonify(weather_data)
 
-##@app.route('/api/photos')
-##NEEDS BUILDINGdef api_photos():
-    ##photos = fetch_photos()  # Fetch photos from OneDrive
-    ##return jsonify(photos)
+@app.route("/api/onedrive/photo")
+def serve_onedrive_photo():
+    return get_next_image()
 
 if __name__ == "__main__":
     start_polling()

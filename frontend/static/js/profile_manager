@@ -1,0 +1,12 @@
+export default function ProfileManager({ profileName, onChange, onSave }) {
+  return (
+    <div className="profile-manager">
+      <select value={profileName} onChange={e => onChange(e.target.value)}>
+        <option value="default">Default</option>
+        <option value="kitchen">Kitchen</option>
+        <option value="party">Party</option>
+      </select>
+      <button onClick={onSave}>💾 Save</button>
+    </div>
+  );
+}
