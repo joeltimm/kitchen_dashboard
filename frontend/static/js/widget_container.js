@@ -1,7 +1,7 @@
 import { Rnd } from "react-rnd";
 import { useState } from "react";
 
-export default function WidgetContainer({ id, children, settings, onUpdate }) {
+export default function widget_container({ id, children, settings, onUpdate }) {
   const [enabled, setEnabled] = useState(settings.enabled);
   const [size, setSize] = useState({ width: settings.width, height: settings.height });
 

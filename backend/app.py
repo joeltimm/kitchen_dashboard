@@ -1,12 +1,19 @@
+import os, sys
+from encrypted_env_loader import load_encrypted_env
+load_encrypted_env()
+
+from pathlib import Path
+ROOT_DIR = Path(__file__).resolve().parent.parent
+sys.path.append(str(ROOT_DIR))
 from flask import Flask, jsonify
 from calendar_widget import fetch_events, start_polling
 from weather import get_weather
 from onedrive_widget import get_next_image
 from widget_profiles import widget_api
-app.register_blueprint(widget_api)
-
 
 app = Flask(__name__)
+app.register_blueprint(widget_api)
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 @app.route('/')
 def home():

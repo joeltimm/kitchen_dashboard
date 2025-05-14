@@ -8,7 +8,7 @@ import logging
 from pathlib import Path
 from flask import jsonify
 
-from common.auth.onedrive_credentials import get_onedrive_token
+from auth.onedrive_credentials import get_onedrive_token
 
 import requests
 
@@ -18,10 +18,9 @@ logger = logging.getLogger(__name__)
 CACHE_PATH = Path(__file__).resolve().parent / "../static_data/onedrive_images/image_cache.json"
 
 # Folder ID or name on OneDrive
-ONEDRIVE_FOLDER_NAME = "DashboardPhotos"
+ONEDRIVE_FOLDER_NAME = "Space Background photos"
 
 GRAPH_API_ENDPOINT = "https://graph.microsoft.com/v1.0/me/drive/root:/{}:/children"
-
 
 def fetch_onedrive_images():
     """

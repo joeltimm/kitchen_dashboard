@@ -4,7 +4,10 @@ import requests
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
-from common.credentials import load_weather_credentials
+from auth.credentials import load_master_credentials
+import config
+config.LOG_PATH
+config.log_error("Something went wrong")
 
 # Google Weather API or Maps API (using weather)
 API_URL = 'https://maps.googleapis.com/maps/api/weather/data'  # Replace with actual API endpoint
@@ -12,11 +15,11 @@ API_URL = 'https://maps.googleapis.com/maps/api/weather/data'  # Replace with ac
 # Scopes required by the Google API
 SCOPES = ['https://www.googleapis.com/auth/cloud-platform']
 
-def get_weather(city):
+def get_weather(CITY):
     """
     Fetch weather data using Google API.
     """
-    creds = load_weather_credentials()
+    creds = load_master_credentials()
     headers = {
         'Authorization': f'Bearer {creds.token}'
     }

@@ -6,14 +6,14 @@ from googleapiclient.discovery import build
 
 from calendar_cache import save_cached_events, load_cached_events
 from config import LOG_PATH, log_error
-from common.credentials import load_calendar_credentials  # ✅ Centralized auth
+from auth.credentials import load_master_credentials
 
 CACHE_FILE = os.path.join(LOG_PATH, 'calendar_cache.json')
 POLL_INTERVAL = 300  # seconds
 
 def get_calendar_service():
     try:
-        creds = load_calendar_credentials()
+        creds = load_master_credentials_joeltimm()
         return build('calendar', 'v3', credentials=creds)
     except Exception as e:
         log_error(f"Calendar service init failed: {e}")

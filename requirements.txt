@@ -6,3 +6,5 @@ google-auth-oauthlib
 requests
 schedule
 APScheduler
+msal
+cryptography
