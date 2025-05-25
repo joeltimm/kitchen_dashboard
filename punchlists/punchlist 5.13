@@ -1,0 +1,118 @@
+🔍 Current Status Summary
+    ✅ Backend Found (functional):
+    /backend/app.py – main Flask entrypoint.
+
+    /backend/calendar_widget.py – handles Google Calendar event fetch/polling.
+
+    /backend/onedrive_widget.py – logic for displaying and rotating OneDrive photos.
+
+    /backend/weather.py – fetches and processes weather info.
+
+    /backend/widget_profiles.py – logic for saving widget sizes, profiles, and enabled states.
+
+    /auth/credentials.py & onedrive_credentials.py – refreshable credential loader for Google + Microsoft APIs.
+
+❌ Frontend HTML not found
+    No templates/index.html or any HTML files are present in the archive. This is a gap that must be addressed, as Flask expects this.
+
+🧠 Application Goal Review
+    Your project aims to be a modular, persistent smart kitchen dashboard, with:
+
+        📅 Google Calendar events (real-time polling + caching)
+
+        🕒 Clock widget (local timezone aware)
+
+        🌦️ Weather widget (via API)
+
+        🖼️ Photo frame (via Microsoft OneDrive folder)
+
+        🧩 Resizable widgets with profile-based layouts
+
+        🛠️ Full backend/frontend integration, auth, and widget config
+
+        ⚠️ Architectural Issues & Fixes Needed
+
+Issue	Fix
+    ModuleNotFoundError: common	Likely caused by PYTHONPATH or running from wrong root. Ensure you're starting Flask from the parent directory (kitchen_dashboard/) and common/ is sibling.
+    app:app not found	Gunicorn assumes the app module is importable. Your service file should set WorkingDirectory=/home/joel/kitchen_dashboard/backend AND gunicorn command should use app:app. ✅
+    ❌ templates/index.html missing	Required for Flask to render root /. You must create this to bootstrap the frontend.
+    Credentials file logic is inconsistent	Refactor to ensure all load_*_credentials() functions have the same structure, error handling, and logging style.
+    Widget config isn't persisted between reloads	You're on the right path with widget_profiles.py, but need to back it with a JSON or SQLite store.
+    No test coverage	Critical functions like fetch_events, get_random_photo, and load_credentials need unittest or pytest.
+
+🔒 Security Gaps
+    Never commit *.json credential tokens or client secret files to Git.
+
+    Lock dependencies via requirements.txt and consider pip-audit.
+
+    All OAuth tokens should use 600 permissions.
+
+    If exposing externally (e.g., via nginx + loca.lt), ensure auth or IP allow-listing on admin routes.
+
+✅ Punch List – Next Steps
+📁 Structural
+ Add templates/index.html for Flask frontend root.
+
+ Create frontend/widgets/Photo.js, WidgetContainer.js, etc.
+
+ Add .env loader in app.py via dotenv.
+
+📦 Backend Enhancements
+ Implement /save-profile, /load-profile, /widgets/on, /widgets/off Flask routes.
+
+ Add JSON-based store for profiles.
+
+ Use random.choice on photo URLs in OneDrive widget backend.
+
+ Implement fallback photo in OneDrive widget if auth fails.
+
+🧪 Testing
+            Create tests/test_credentials.py, test_calendar.py, etc.
+
+            Example:
+
+            python
+            Copy
+            def test_calendar_credentials_loads():
+                creds = load_calendar_credentials()
+                assert creds.valid
+            Use pytest:
+
+            bash
+            Copy
+            pytest tests/
+            🚀 Suggestion: Dev vs Prod
+            Your code would benefit from:
+
+            bash
+Copy
+/joel/kitchen_dashboard/
+├── backend/
+│   ├── app.py
+│   └── ...
+├── frontend/
+│   └── ...
+├── common/          
+
+├── templates/
+│   └── index.html
+├── static/
+│   └── styles.css
+├── .env
+├── tests/
+│   └── test_calendar.py
+Use a dev .env like:
+
+ini
+Copy
+TZ=America/Chicago
+FLASK_ENV=development
+Would you like me to now:
+
+🧪 Write full pytest tests for existing load_credentials, get_weather, get_random_photo?
+
+📄 Generate a index.html and frontend starter files?
+
+📦 Write /save-profile and /load-profile Flask endpoints?
+
+Add Pollen and Airquality from the google weather api?
