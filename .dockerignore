@@ -19,6 +19,7 @@ venv/
 .pytest_cache/
 
 # Auth tokens and credentials
+auth/secrets/
 onedrive_credentials.json
 auth/*.json
 auth/credentials.py
