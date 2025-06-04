@@ -10,13 +10,27 @@ from calendar_widget import fetch_events, start_polling
 from weather import get_weather
 from onedrive_widget import get_next_image
 from widget_profiles import widget_api
+from flask import render_template
 
 app = Flask(__name__)
 app.register_blueprint(widget_api)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
+BACKEND_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = BACKEND_DIR.parent # This is kitchen_dashboard/
+
+# Define explicit paths for frontend folders
+STATIC_FOLDER_PATH = PROJECT_ROOT / 'frontend' / 'static'
+TEMPLATE_FOLDER_PATH = PROJECT_ROOT / 'frontend' / 'templates'
+
+app = Flask(__name__,
+            static_folder=str(STATIC_FOLDER_PATH),
+            template_folder=str(TEMPLATE_FOLDER_PATH),
+            static_url_path='/static') # This is the URL path for static files, usually '/static'
+
 @app.route('/')
 def home():
+    return render_template('index.html') # Will look for index.html in frontend/templates/
     return 'Welcome to the Kitchen Dashboard!'
 
 @app.route("/api/calendar")

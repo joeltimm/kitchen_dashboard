@@ -15,6 +15,7 @@ venv/
 
 # Auth tokens and credentials
 auth/secrets/
+auth/secrets/*.json
 onedrive_credentials.json
 auth/*.json
 auth/credentials.py
